@@ -7,7 +7,7 @@ function App() {
   const isLargeScreen = useBreakpointValue({
     base: false,
     sm: false,
-    md: true,
+    md: false,
     lg: true,
     xl: true,
   });
@@ -18,12 +18,16 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
       <GridItem area="nav">
         <NavBar />
       </GridItem>
       <Show when={isLargeScreen}>
-        <GridItem area="aside">
+        <GridItem area="aside" paddingX={5}>
           <GenreList />
         </GridItem>
       </Show>
